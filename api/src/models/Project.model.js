@@ -20,6 +20,9 @@ const ProjectSchema = mongoose.Schema({
     technologies:{
         type: String
     },
+    repository: {
+        type: String
+    }
 })
 
 module.exports = mongoose.model('Proyect', ProjectSchema);

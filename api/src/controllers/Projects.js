@@ -21,10 +21,16 @@ const postProject=  (req, res, next) => {
         description,
         technologies
     });
-
-    project.save()
+    Project.findOne({title: title})
     .then(data => {
-        res.json(data);
+        if (data){
+           return  res.send({msg: 'The project already exists'});
+        } else {
+            project.save()
+            .then(data => {
+                res.json(data);
+            })
+        }
     })
     .catch(err =>{
         next(error)

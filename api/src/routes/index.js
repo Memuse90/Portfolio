@@ -1,11 +1,9 @@
 const {Router} = require ('express');
-const {getProjects, postProject, getProjectById, deleteProject} = require ('../controllers/Projects')
-
+const ProjectsRoutes = require ('./Projects');
+const AdminRoutes = require ('./Admin')
 const router = Router();
 
-router.get('/projects', getProjects);
-router.post('/create', postProject);
-router.get('/project/:id', getProjectById);
-router.delete('/delete/:id', deleteProject)
+router.use('/projects', ProjectsRoutes);
+router.use('/admin', AdminRoutes); 
 
 module.exports = router;
