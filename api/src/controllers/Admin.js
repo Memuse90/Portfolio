@@ -92,9 +92,16 @@ const renovateToken = async (req, res, next) => {
     sendRefreshToken(res, refreshToken);
     sendAccessToken(req, res, accessToken);
 }
+const logOut = (req, res, next) => {
+    res.clearCookie('refreshToken', {path: '/andmin/refresh_token'});
+    return res.send({
+        msg: 'Logged out'
+    })
+}
 
 module.exports = {
     register,
     logIn,
-    renovateToken
+    renovateToken,
+    logOut
 }
